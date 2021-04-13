@@ -1,18 +1,18 @@
-
+# LinkedList learning
 
 # 链表
-
+ 
 单链表：
 
 链表中的每个元素都是一个单独的对象，而所有对象都通过每个元素中的引用字段链接在一起
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%203.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%203.png)
+![image/Untitled%203.png](image/Untitled%203.png)
 
 双链表：
 
 与单链表不同的是，双链表的每个节点都含有两个引用字段
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%204.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%204.png)
+![image/Untitled%204.png](image/Untitled%204.png)
 
 优点：
 
@@ -71,4 +71,4 @@ pindex -> prev = pnode;
 
 注：K=2时为24题
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%205.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%205.png)
+![image/Untitled%205.png](image/Untitled%205.png)

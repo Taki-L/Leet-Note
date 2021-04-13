@@ -2,26 +2,7 @@
 
 # 数组、字符串
 
-## 数组
 
-优点：
-
-1. 能在O(1)的时间里根据数组下标查询某个元素
-2. 构建数组非常简单
-
-缺点：
-
-1. 构建时必须分配一段连续的空间
-2. 查询某个元素是否存在是需要遍历整个数组，耗费O(n)的时间
-
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled.png)
-
-Note：
-
-- 数组是存放在连续空间上的相同类型数据的集合
-- 正因为数组的内存空间地址是连续的，所以在删除或者增加元素的时候，就难免要移动其他元素的地址
-
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%201.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%201.png)
 
 ## 字符串
 
@@ -29,9 +10,80 @@ Note：
 
 思路：可建立字母表，词A在字母表加计数，词B在字母表减计数，最终为0则为true
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%202.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%202.png)
+![image/Untitled%202.png](image/Untitled%202.png)
 
+# 链表
 
+单链表：
+
+链表中的每个元素都是一个单独的对象，而所有对象都通过每个元素中的引用字段链接在一起
+
+![image/Untitled%203.png](image/Untitled%203.png)
+
+双链表：
+
+与单链表不同的是，双链表的每个节点都含有两个引用字段
+
+![image/Untitled%204.png](image/Untitled%204.png)
+
+优点：
+
+1. 能在O(1)时间内删除或者添加元素（单/双链表需要前/前后链表的信息）
+2. 可以灵活的分配内存空间
+
+缺点：
+
+查询元素需要O(n)的时间
+
+## 双链表示例
+
+```cpp
+//双向链表定义
+typedef structdlink_node
+{
+	struct dlink_node *prev;
+	struct dlink_node *next;
+	void *val;
+}node;
+```
+
+```cpp
+//链表删除节点pindex
+pindex -> next -> prev = pindex -> prev;
+pindex -> prev -> next = pindex -> next;
+free(pindex);  //删除后需要释放节点
+```
+
+```cpp
+//将pnode节点插入到pindex之前
+pnode -> prev = pindex -> prev;
+pnode -> next = pindex;
+pindex -> prev -> next = pnode;
+pindex -> prev = pnode;
+```
+
+## 解题技巧
+
+1. 利用快慢指针（有时需要三个指针）
+2. 构建一个虚假链表头
+
+    适用问题：
+
+    1. 两个排序链表，进行整合排序
+    2. 将链表的奇偶数按原定顺序分离，生成前半部分为奇数，后半部分为偶数的链表
+
+    如果不用虚假链表头，在创建新链表第一个元素的时候，都需要判断一下链表头指针是否为空
+
+## 训练技巧
+
+- 在纸上或者白板上画出节点之间的相互关系
+- 画出修改的方法
+
+## 练习题：25. K个一组翻转链表
+
+注：K=2时为24题
+
+![image/Untitled%205.png](image/Untitled%205.png)
 
 # 栈
 
@@ -51,17 +103,17 @@ Note：
 
 可用栈操作，时间复杂度为O(1)
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%206.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%206.png)
+![image/Untitled%206.png](image/Untitled%206.png)
 
 ## 练习题：20. 有效的括号
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%207.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%207.png)
+![image/Untitled%207.png](image/Untitled%207.png)
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%208.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%208.png)
+![image/Untitled%208.png](image/Untitled%208.png)
 
 ## 练习题：739. 每日温度
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%209.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%209.png)
+![image/Untitled%209.png](image/Untitled%209.png)
 
 # 队列
 
@@ -70,7 +122,7 @@ Note：
 - **先进先出（FIFO）**
 - 只允许在队尾查看和添加数据，在队头查看和删除数据
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2010.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2010.png)
+![image/Untitled%2010.png](image/Untitled%2010.png)
 
 ## 算法基本思想
 
@@ -90,7 +142,7 @@ Note：
 - 可以利用一个双链表实现
 - 队列的头尾两端可以在O(1)的时间内进行数据的查看、添加和删除
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2011.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2011.png)
+![image/Untitled%2011.png](image/Untitled%2011.png)
 
 ### 常用场景
 
@@ -98,7 +150,7 @@ Note：
 
 ### 练习题：239. 滑动窗口最大值
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2012.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2012.png)
+![image/Untitled%2012.png](image/Untitled%2012.png)
 
 # 树
 
@@ -111,27 +163,27 @@ Note：
 
 - 普通二叉树
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2013.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2013.png)
+![image/Untitled%2013.png](image/Untitled%2013.png)
 
 - 平衡二叉树
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2014.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2014.png)
+![image/Untitled%2014.png](image/Untitled%2014.png)
 
 - 完全二叉树
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2015.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2015.png)
+![image/Untitled%2015.png](image/Untitled%2015.png)
 
 - 二叉搜索树
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2016.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2016.png)
+![image/Untitled%2016.png](image/Untitled%2016.png)
 
 - 四叉树
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2017.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2017.png)
+![image/Untitled%2017.png](image/Untitled%2017.png)
 
 - 红黑树、自平衡二叉搜索树（少见）
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2018.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2018.png)
+![image/Untitled%2018.png](image/Untitled%2018.png)
 
 ## 树的遍历
 
@@ -139,7 +191,7 @@ Note：
 
 根节点→左子树→右子树
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2019.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2019.png)
+![image/Untitled%2019.png](image/Untitled%2019.png)
 
 用途：
 
@@ -150,7 +202,7 @@ Note：
 
 左子树→根节点→右子树
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2020.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2020.png)
+![image/Untitled%2020.png](image/Untitled%2020.png)
 
 用途：
 
@@ -160,7 +212,7 @@ Note：
 
 左子树→右子树→根节点
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2021.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2021.png)
+![image/Untitled%2021.png](image/Untitled%2021.png)
 
 用途：
 
@@ -220,7 +272,7 @@ eg：从一堆数中取出K个最大的数，
 
 ## 练习题：347. 前 K 个高频元素
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2022.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2022.png)
+![image/Untitled%2022.png](image/Untitled%2022.png)
 
 # 图
 
@@ -237,7 +289,7 @@ eg：从一堆数中取出K个最大的数，
 
 ## 练习题：785. 判断二分图
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2023.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2023.png)
+![image/Untitled%2023.png](image/Untitled%2023.png)
 
 # 前缀树
 
@@ -260,7 +312,7 @@ eg：从一堆数中取出K个最大的数，
 
 那么用前缀树来构建这个字典如下：
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2024.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2024.png)
+![image/Untitled%2024.png](image/Untitled%2024.png)
 
 ## 重要性质
 
@@ -291,9 +343,9 @@ Note：根节点是空的，除了根节点，其他所有节点都有可能是�
 
 ## 练习题：212. 单词搜索 II
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2025.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2025.png)
+![image/Untitled%2025.png](image/Untitled%2025.png)
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2026.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2026.png)
+![image/Untitled%2026.png](image/Untitled%2026.png)
 
 # 线段树
 
@@ -318,15 +370,15 @@ Note：根节点是空的，除了根节点，其他所有节点都有可能是�
 
 eg：数组是[1,3,5,7,9,11]
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2027.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2027.png)
+![image/Untitled%2027.png](image/Untitled%2027.png)
 
 ## 练习题：315. 计算右侧小于当前元素的个数
 
 如果把分段的区间设计成按照数值的大小来划分，并记录下在这个区间中的数的总和，就能快速地知道比当前数还要小的数有多少个。
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2028.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2028.png)
+![image/Untitled%2028.png](image/Untitled%2028.png)
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2029.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2029.png)
+![image/Untitled%2029.png](image/Untitled%2029.png)
 
 # 树状数组
 
@@ -499,11 +551,11 @@ void merge(int[] nums, int lo, int mid, int hi) {
 }
 ```
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2030.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2030.png)
+![image/Untitled%2030.png](image/Untitled%2030.png)
 
 ## 快速排序
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2031.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2031.png)
+![image/Untitled%2031.png](image/Untitled%2031.png)
 
 ### 算法思想
 
@@ -517,7 +569,7 @@ void merge(int[] nums, int lo, int mid, int hi) {
 - 时间复杂度：O(nlogn) ~ O(n^2)
 - 空间复杂度：O(logn)
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2032.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2032.png)
+![image/Untitled%2032.png](image/Untitled%2032.png)
 
 ```cpp
 //主体函数
@@ -572,14 +624,14 @@ int partition(int[] nums, int lo, int hi) {
 1. 必须是有向图
 2. 图里没有环
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2033.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2033.png)
+![image/Untitled%2033.png](image/Untitled%2033.png)
 
 ### 复杂度
 
 - 时间复杂度：O(n)
 - 空间复杂度：
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2034.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2034.png)
+![image/Untitled%2034.png](image/Untitled%2034.png)
 
 ```cpp
 /*
@@ -620,9 +672,9 @@ void sort() {
 
 ## 示例：汉诺塔
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2035.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2035.png)
+![image/Untitled%2035.png](image/Untitled%2035.png)
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2036.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2036.png)
+![image/Untitled%2036.png](image/Untitled%2036.png)
 
 ```cpp
 void hano(char A, char B, char C, int n) {
@@ -648,7 +700,7 @@ void hano(char A, char B, char C, int n) {
 
 ## 练习题：91. 解码方法
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2037.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2037.png)
+![image/Untitled%2037.png](image/Untitled%2037.png)
 
 ```cpp
 int numDecodings(String s) {
@@ -713,11 +765,11 @@ function fn(n) {
 
 ## 练习题：247. 中心对称数II
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2038.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2038.png)
+![image/Untitled%2038.png](image/Untitled%2038.png)
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2039.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2039.png)
+![image/Untitled%2039.png](image/Untitled%2039.png)
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2040.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2040.png)
+![image/Untitled%2040.png](image/Untitled%2040.png)
 
 ```cpp
 List<String> helper(int n, int m) {
@@ -769,7 +821,7 @@ void hano(char A, char B, char C, int n) {
 }
 ```
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2041.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2041.png)
+![image/Untitled%2041.png](image/Untitled%2041.png)
 
 算法执行时间：
 
@@ -783,7 +835,7 @@ void hano(char A, char B, char C, int n) {
 
 f(n)指每次递归完毕后，额外的计算执行时间
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2042.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2042.png)
+![image/Untitled%2042.png](image/Untitled%2042.png)
 
 示例：[https://www.notion.so/data-structure-13398fb90bd2465ab37413dac84ab08e#5ab0a0393c984a30955bb2143400c871](https://www.notion.so/data-structure-13398fb90bd2465ab37413dac84ab08e#5ab0a0393c984a30955bb2143400c871)
 
@@ -895,15 +947,15 @@ function fn(n) {
 
 ## 示例
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2043.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2043.png)
+![image/Untitled%2043.png](image/Untitled%2043.png)
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2044.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2044.png)
+![image/Untitled%2044.png](image/Untitled%2044.png)
 
 ## 例题分析
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2045.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2045.png)
+![image/Untitled%2045.png](image/Untitled%2045.png)
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2046.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2046.png)
+![image/Untitled%2046.png](image/Untitled%2046.png)
 
 方法：
 
@@ -953,9 +1005,9 @@ DFS是图论中的算法，分析复杂度的时候应借用图论的思想
 
 ## DFS寻找最短路径
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2047.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2047.png)
+![image/Untitled%2047.png](image/Untitled%2047.png)
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2048.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2048.png)
+![image/Untitled%2048.png](image/Untitled%2048.png)
 
 总体步骤：
 
@@ -986,9 +1038,9 @@ DFS步骤：
 
 ## 示例
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2043.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2043.png)
+![image/Untitled%2043.png](image/Untitled%2043.png)
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2049.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2049.png)
+![image/Untitled%2049.png](image/Untitled%2049.png)
 
 ## 步骤
 
@@ -1035,9 +1087,9 @@ DFS步骤：
     2. 第一个人怎么告诉第二个人可以去访问这个点？把这个点放入到队列中。
     3. 如何让 4 个人在独立的平面里搜索？利用一个三维矩阵记录每个层面里的点。
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2050.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2050.png)
+![image/Untitled%2050.png](image/Untitled%2050.png)
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2051.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2051.png)
+![image/Untitled%2051.png](image/Untitled%2051.png)
 
 **步骤**：
 
@@ -1066,9 +1118,9 @@ DFS步骤：
     1. 保证每个重叠的子问题只会被求解一次
     2. 重叠子问题
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2052.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2052.png)
+![image/Untitled%2052.png](image/Untitled%2052.png)
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2053.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2053.png)
+![image/Untitled%2053.png](image/Untitled%2053.png)
 
 ## 练习题：300. 最长子序列的长度（上升子序列）
 
@@ -1088,7 +1140,7 @@ DFS步骤：
 2. f(n-1)表示数组nums[0,1...,n-2]中的最长子序列
 3. f(1)表示数组nums[0]的最长子序列
 
-![https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2054.png](https://github.com/Taki-L/Leet-Note/blob/main/Pics/Untitled%2054.png)
+![image/Untitled%2054.png](image/Untitled%2054.png)
 
 **难点：**
 
