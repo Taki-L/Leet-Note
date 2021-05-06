@@ -4,6 +4,7 @@
 2. [No.707 Design Linked List](https://github.com/Taki-L/Leet-Note/blob/main/2-LinkedList/707.md)
 3. [No.206 Reverse Linked List](https://github.com/Taki-L/Leet-Note/blob/main/2-LinkedList/206.md)
 4. [No.19 Remove Nth Node From End of List](https://github.com/Taki-L/Leet-Note/blob/main/2-LinkedList/19.md)
+5. [No.142 Linked List Cycle II](https://github.com/Taki-L/Leet-Note/blob/main/2-LinkedList/142.md)
 
 # 链表
 
